@@ -88,7 +88,8 @@ def create_priority_queue(frequency: dict[str, int]) -> MinHeap:
 
 
 def build_tree(priority_queue: MinHeap) -> Node:
-    pass
+    for n in priority_queue.data:
+
 
 
 
