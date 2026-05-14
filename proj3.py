@@ -78,8 +78,13 @@ def count_frequency(s: str)-> dict[str,int]:
 
 
 def create_priority_queue(frequency: dict[str, int]) -> MinHeap:
+    new_data = []
+    new_heap = MinHeap(new_data)
+    for k in frequency:
+        new_node = Node(freq = frequency[k], char = k, left = None, right = None)
+        insert(new_heap, new_node)
 
-
+    return new_heap
 
 
 def build_tree(priority_queue: MinHeap) -> Node:
