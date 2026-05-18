@@ -88,15 +88,26 @@ def create_priority_queue(frequency: dict[str, int]) -> MinHeap:
 
 
 def build_tree(priority_queue: MinHeap) -> Node:
-    for n in priority_queue.data:
+    new_heap = MinHeap(priority_queue.data)
+    if len(new_heap.data) == 1:
+        return new_heap.data[0]
+    m1 = extract_min(new_heap)[1]
+    m2 = extract_min(new_heap)[1]
+    sum_min = m1.freq + m2.freq
+    new_node = Node(freq=sum_min, char=m2.char, left=m2, right=m1)
+    insert(new_heap, new_node)
+    return build_tree(new_heap)
+
 
 
 
 
 
 def generate_codes(node: Node | None, prefix="", code: dict | None =None)-> dict:
+    new_dict = {}
     if code is None:
-        code = {}  
+        code = {}
+    generate_codes(node)
     pass
 
 
